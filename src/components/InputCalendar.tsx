@@ -1,18 +1,20 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from "react";
+import { useEffect, useState, ChangeEvent, FC } from "react";
 
 interface InputCalendarProps {
   handleDate: (date: string) => void;
 }
 
-const InputCalendar: React.FC<InputCalendarProps> = ({ handleDate }) => {
-  const [fecha, setFecha] = React.useState<string>("");
+const InputCalendar: FC<InputCalendarProps> = ({ handleDate }) => {
+  const [fecha, setFecha] = useState<string>("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newDate = e.target.value;
-    setFecha(newDate);
-    handleDate(fecha); // Llamar a la función del padre con la nueva fecha
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setFecha(e.target.value);
   };
+
+  useEffect(() => {
+    handleDate(fecha);
+  }, [fecha, handleDate]);
 
   return (
     <>
@@ -21,6 +23,7 @@ const InputCalendar: React.FC<InputCalendarProps> = ({ handleDate }) => {
         className="border-2 border-gray-300 rounded-md p-2 m-2"
         onChange={handleChange}
       />
+      {/* {fecha && <p className="text-center">Fecha: {fecha}</p>} */}
     </>
   );
 };

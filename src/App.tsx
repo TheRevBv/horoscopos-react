@@ -12,47 +12,54 @@ const App = () => {
   // const [horoscopo, setHoroscopo] = useState<ISignosZodiaco>();
   const [fecha, setFecha] = useState<string>("");
   const [horoscopo, setHoroscopo] = useState<ISignosZodiaco>();
+  const [signosZodiaco, setSignosZodiaco] = useState<ISignosZodiaco[]>([]);
   const uri: string = import.meta.env.VITE_API_URI!;
 
-  const headers = new Headers();
+  const headers = new Headers({
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+  });
 
   const getSignosZodiaco = async (): Promise<ISignosZodiaco[]> => {
-    headers.append("Content-Type", "application/json");
-    headers.append("Accept", "application/json");
-    headers.append("Access-Control-Allow-Origin", "*");
-    const resp = await fetch(uri, {
+    const response = await fetch(uri, {
       method: "GET",
-      headers: headers,
+      headers,
     });
-    const data = await resp.json();
+    const data = await response.json();
     return data;
   };
 
-  useEffect(
-    () => {
-      console.log(uri);
-      // Load environment variables from .env
-      if (fecha) {
-        getZodiacSign();
-      }
-    }
-    // [fecha]
-  );
-
-  const getZodiacSign = async () => {
-    const [, month, day] = fecha.split("-").map(Number);
-    const zodiacSign = await getSignosZodiaco().then((data) =>
-      data.find(
-        (sign: ISignosZodiaco) =>
-          (month === Number(sign.fechaInicio.split("-")[0]) &&
-            day >= Number(sign.fechaInicio.split("-")[1])) ||
-          (month === Number(sign.fechaFin.split("-")[0]) &&
-            day <= Number(sign.fechaFin.split("-")[1]))
-      )
-    );
-    setHoroscopo(zodiacSign!);
-    // return zodiacSign;
+  const getZodiacSign = async (): Promise<void> => {
+    const [, month, day] = fecha.split("-").map((item) => parseInt(item));
+    const zodiacSign = signosZodiaco.find((signo) => {
+      const [monthStart, dayStart] = signo.fechaInicio
+        .split("-")
+        .map((item) => parseInt(item));
+      const [monthEnd, dayEnd] = signo.fechaFin
+        .split("-")
+        .map((item) => parseInt(item));
+      return (
+        (month === monthStart && day >= dayStart) ||
+        (month === monthEnd && day <= dayEnd)
+      );
+    });
+    setHoroscopo(zodiacSign);
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      getSignosZodiaco()
+        .then((data) => {
+          setSignosZodiaco(data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }, 1000);
+    if (fecha) {
+      getZodiacSign();
+    }
+  });
 
   return (
     <>
