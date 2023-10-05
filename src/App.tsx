@@ -12,16 +12,26 @@ const App = () => {
   // const [horoscopo, setHoroscopo] = useState<ISignosZodiaco>();
   const [fecha, setFecha] = useState<string>("");
   const [horoscopo, setHoroscopo] = useState<ISignosZodiaco>();
-  const uri: string = "http://127.0.0.1:5173/api/horoscopos.json";
+  const uri: string = import.meta.env.VITE_API_URI!;
+
+  const headers = new Headers();
 
   const getSignosZodiaco = async (): Promise<ISignosZodiaco[]> => {
-    const resp = await fetch(uri);
+    headers.append("Content-Type", "application/json");
+    headers.append("Accept", "application/json");
+    headers.append("Access-Control-Allow-Origin", "*");
+    const resp = await fetch(uri, {
+      method: "GET",
+      headers: headers,
+    });
     const data = await resp.json();
     return data;
   };
 
   useEffect(
     () => {
+      console.log(uri);
+      // Load environment variables from .env
       if (fecha) {
         getZodiacSign();
       }
