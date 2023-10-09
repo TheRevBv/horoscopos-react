@@ -3,4 +3,5 @@ export interface ISignosZodiaco {
   fechaInicio: string;
   fechaFin: string;
   imgPath: string;
+  horoscopo: string;
 }

@@ -9,13 +9,25 @@
   @apply text-5xl font-bold;
 }
 
+.h2 {
+  @apply text-4xl font-bold;
+}
+
+.h3 {
+  @apply text-3xl font-bold;
+}
+
+.card {
+  @apply max-w-sm rounded overflow-hidden shadow-lg m-4 bg-cyan-950 text-white flex flex-col justify-center items-center;
+}
+
 /* 
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
-}
+} 
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }

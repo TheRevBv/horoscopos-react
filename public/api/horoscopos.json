@@ -3,72 +3,84 @@
     "nombre": "Aries",
     "fechaInicio": "03-21",
     "fechaFin": "04-19",
-    "imgPath": "/aries.jpg"
+    "imgPath": "/aries.jpg",
+    "horoscopo": "Se despertará con el convencimiento de introducir nuevos cambios en su forma de actuar. No dude más, ya que es el momento de hacerlo en su vida."
   },
   {
     "nombre": "Tauro",
     "fechaInicio": "04-20",
     "fechaFin": "05-20",
-    "imgPath": "/tauro.jpg"
+    "imgPath": "/tauro.jpg",
+    "horoscopo": "No se deje llevar por la negatividad de los demás. Hoy es un día para disfrutar de la vida y de las pequeñas cosas que le rodean. Aproveche la jornada."
   },
   {
     "nombre": "Geminis",
     "fechaInicio": "05-21",
     "fechaFin": "06-20",
-    "imgPath": "/geminis.jpg"
+    "imgPath": "/geminis.jpg",
+    "horoscopo": "Hoy es un día para disfrutar de la vida y de las pequeñas cosas que le rodean. Aproveche la jornada."
   },
   {
     "nombre": "Cancer",
     "fechaInicio": "06-21",
     "fechaFin": "07-22",
-    "imgPath": "/cancer.jpg"
+    "imgPath": "/cancer.jpg",
+    "horoscopo": "Se despertará con el convencimiento de introducir nuevos cambios en su forma de actuar. No dude más, ya que es el momento de hacerlo en su vida."
   },
   {
     "nombre": "Leo",
     "fechaInicio": "07-23",
     "fechaFin": "08-22",
-    "imgPath": "/leo.jpg"
+    "imgPath": "/leo.jpg",
+    "horoscopo": "Si pretende obtener una rápida prosperidad material, dependerá de su excelente criterio intelectual y de su perseverancia en el trabajo."
   },
   {
     "nombre": "Virgo",
     "fechaInicio": "08-23",
     "fechaFin": "09-22",
-    "imgPath": "/virgo.jpg"
+    "imgPath": "/virgo.jpg",
+    "horoscopo": "En esta jornada deberá encontrar el equilibrio en su vida. Antes que nada, deberá determinar cuáles son las prioridades y lo más importante para usted."
   },
   {
     "nombre": "Libra",
     "fechaInicio": "09-23",
     "fechaFin": "10-22",
-    "imgPath": "/libra.jpg"
+    "imgPath": "/libra.jpg",
+    "horoscopo": "Durante esta jornada, permita que su imaginación se libere y se convierta en la fuente de su inspiración. De esta forma, podrá darle un nuevo orden a su vida."
   },
   {
     "nombre": "Escorpio",
     "fechaInicio": "10-23",
     "fechaFin": "11-21",
-    "imgPath": "/escorpio.jpg"
+    "imgPath": "/escorpio.jpg",
+    "horoscopo": "Durante este día, lo más probable es que toda su fuerza esté dirigida en la búsqueda de la orientación para su vocación o estudios específicos."
   },
   {
     "nombre": "Sagitario",
     "fechaInicio": "11-22",
     "fechaFin": "12-21",
-    "imgPath": "/sagitario.jpg"
+    "imgPath": "/sagitario.jpg",
+    "horoscopo": "Será esencial para este día que empiece a controlar cada una de las emociones y así evitar que estas lo afecten de manera negativa a su animo."
   },
   {
     "nombre": "Capricornio",
     "fechaInicio": "12-22",
     "fechaFin": "01-19",
-    "imgPath": "/capricornio.jpg"
+    "imgPath": "/capricornio.jpg",
+    "horoscopo": "Antes de fijar sus objetivos, deberá considerar los inconvenientes posibles y adecuar todas sus ideas a los recursos con los que cuenta."
   },
   {
     "nombre": "Acuario",
     "fechaInicio": "01-20",
     "fechaFin": "02-18",
-    "imgPath": "/acuario.jpg"
+    "imgPath": "/acuario.jpg",
+    "horoscopo": "Sería oportuno que comience a implementar soluciones convenientes a muchos de los obstáculos que se le han presentado en estos días. No se deje estar."
   },
   {
     "nombre": "Piscis",
     "fechaInicio": "02-19",
     "fechaFin": "03-20",
-    "imgPath": "/piscis.jpg"
+    "imgPath": "/piscis.jpg",
+    "horoscopo": "Si pretende incentivar su creatividad, deberá poner en práctica las capacidades como la motivación y las características de su personalidad."
   }
 ]

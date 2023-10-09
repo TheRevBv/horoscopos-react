@@ -2,11 +2,12 @@
 import "./assets/css/App.css";
 
 import { useEffect, useState } from "react";
+import { ISignosZodiaco } from "./models/ISignosZodiaco";
 
 //My components
-import { ISignosZodiaco } from "./models/ISignosZodiaco";
 import CardHoroscopo from "./components/CardHoroscopo";
 import InputCalendar from "./components/InputCalendar";
+import Header from "./components/Header";
 
 const App = () => {
   // const [horoscopo, setHoroscopo] = useState<ISignosZodiaco>();
@@ -64,7 +65,7 @@ const App = () => {
   return (
     <>
       <div className="flex flex-col items-center justify-center h-screen gap-4">
-        <h1 className="h1">Horoscopos React</h1>
+        <Header />
         <InputCalendar handleDate={setFecha} />
         {horoscopo && <CardHoroscopo horoscopo={horoscopo} />}
       </div>
