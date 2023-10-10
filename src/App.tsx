@@ -1,72 +1,54 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import "./assets/css/App.css";
-
-import { useEffect, useState } from "react";
+import data from "./api/horoscopos.json";
 import { ISignosZodiaco } from "./models/ISignosZodiaco";
 
+import { useState, useEffect } from "react";
+
 //My components
-import CardHoroscopo from "./components/CardHoroscopo";
+// import CardHoroscopo from "./components/CardHoroscopo";
 import InputCalendar from "./components/InputCalendar";
 import Header from "./components/Header";
+import CardHoroscopo from "./components/CardHoroscopo";
 
 const App = () => {
-  // const [horoscopo, setHoroscopo] = useState<ISignosZodiaco>();
-  const [fecha, setFecha] = useState<string>("");
   const [horoscopo, setHoroscopo] = useState<ISignosZodiaco>();
-  const [signosZodiaco, setSignosZodiaco] = useState<ISignosZodiaco[]>([]);
-  const uri: string = import.meta.env.VITE_API_URI!;
+  const [fecha, setFecha] = useState<string>("");
+  const horoscopos: ISignosZodiaco[] = data;
 
-  const headers = new Headers({
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*",
-  });
-
-  const getSignosZodiaco = async (): Promise<ISignosZodiaco[]> => {
-    const response = await fetch(uri, {
-      method: "GET",
-      headers,
-    });
-    const data = await response.json();
-    return data;
-  };
-
-  const getZodiacSign = async (): Promise<void> => {
+  const getHoroscopo = () => {
+    // console.log(fecha);
     const [, month, day] = fecha.split("-").map((item) => parseInt(item));
-    const zodiacSign = signosZodiaco.find((signo) => {
-      const [monthStart, dayStart] = signo.fechaInicio
+    const horosc = horoscopos.find((item) => {
+      const [mesIni, diaIni] = item.fechaInicio
         .split("-")
         .map((item) => parseInt(item));
-      const [monthEnd, dayEnd] = signo.fechaFin
+      const [mesFin, diaFin] = item.fechaFin
         .split("-")
         .map((item) => parseInt(item));
-      return (
-        (month === monthStart && day >= dayStart) ||
-        (month === monthEnd && day <= dayEnd)
-      );
+
+      if (month === mesIni && day >= diaIni) return true;
+      if (month === mesFin && day <= diaFin) return true;
+      return false;
     });
-    setHoroscopo(zodiacSign);
+    setHoroscopo(horosc);
+    // console.log(horoscopo);
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      getSignosZodiaco()
-        .then((data) => {
-          setSignosZodiaco(data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }, 1000);
-    if (fecha) {
-      getZodiacSign();
-    }
+    getHoroscopo();
   });
 
   return (
     <>
       <div className="flex flex-col items-center justify-center h-screen gap-4">
         <Header />
-        <InputCalendar handleDate={setFecha} />
+        <InputCalendar
+          value={fecha}
+          onChange={(date) => {
+            setFecha(date);
+          }}
+        />
         {horoscopo && <CardHoroscopo horoscopo={horoscopo} />}
       </div>
     </>
