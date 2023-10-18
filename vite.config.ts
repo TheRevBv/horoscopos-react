@@ -11,7 +11,8 @@ export default defineConfig({
       devOptions: {
         enabled: true,
       },
-      includeAssets: ["assets/android", "assets/ios", "assets/windows11"],
+      injectRegister: "auto",
+      includeAssets: ["assets/windows11/", "assets/android/", "assets/ios/"],
       manifest: {
         name: "Horoscope App",
         short_name: "Horoscope",
